@@ -34,6 +34,7 @@ impl World {
         }
     }
 
+    // Updates the worlds status
     fn update(&mut self, action: Action) {
         let position = &self.cleaner_position;
         match (action, position) {
@@ -45,6 +46,7 @@ impl World {
         }
     }
 
+    // Returns a perception based with the vacuum cleaners position and the location status
     fn percept(&self) -> Perception {
         match (&self.cleaner_position, &self.location_left, &self.location_right) {
             (Location::A, Status::Dirty, _) => Perception(Location::A, Status::Dirty),
